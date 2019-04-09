@@ -10,15 +10,17 @@ class Api::V1::MessagesController < ActionController::API
 
   def create
     @message = Message.new(message_params)
+    # or @message = @channel.messages.build(message_params)
     @message.user = current_user
-    binding.pry
+    @message.channel = @channel
     @message.save!
+    render json: @message
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:content, :channel)
+    params.require(:message).permit(:content)
   end
 
   def set_channel

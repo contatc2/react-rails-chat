@@ -1,4 +1,4 @@
-import { FETCH_MESSAGES, MESSAGE_POSTED, CHANNEL_SELECTED } from '../actions';
+import { FETCH_MESSAGES, MESSAGE_POSTED } from '../actions';
 
 export default function(state = null, action) {
   switch (action.type) {

@@ -16,7 +16,7 @@ export function fetchMessages(channel) {
 export function createMessage(channel, content) {
   const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
   const url = `${BASE_URL}/${channel}/messages`;
-  const body = { content, channel }; // ES6 destructuring
+  const body = { content }; // ES6 destructuring
   const promise = fetch(url, {
     method: 'POST',
     credentials: "same-origin",
@@ -29,8 +29,14 @@ export function createMessage(channel, content) {
   }).then(r => r.json());
 
   return {
-    type: MESSAGE_POSTED,
+    type: MESSAGE_CREATED,
     payload: promise // Will be resolved by redux-promise
   };
 }
 
+export function appendMessage(message) {
+  return {
+    type: MESSAGE_POSTED,
+    payload: message
+  }
+}

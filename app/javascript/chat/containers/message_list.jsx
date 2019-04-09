@@ -38,11 +38,11 @@ class MessageList extends Component {
         <div className="channel-content" ref = {this.list}>
           {
             this.props.messages.map((message) => {
-              return <Message key={message.id} message={message} selectedChannel={this.props.selectedChannel} />;
+              return <Message message={message} key={message.id} />;
             })
           }
         </div>
-        <MessageForm />
+        <MessageForm selectedChannel={this.props.selectedChannel} />
       </div>
     );
   }
