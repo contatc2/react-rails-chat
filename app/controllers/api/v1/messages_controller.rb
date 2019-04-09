@@ -9,9 +9,17 @@ class Api::V1::MessagesController < ActionController::API
   end
 
   def create
+    @message = Message.new(message_params)
+    @message.user = current_user
+    binding.pry
+    @message.save!
   end
 
   private
+
+  def message_params
+    params.require(:message).permit(:content, :channel)
+  end
 
   def set_channel
     @channel = Channel.find_by(name: params[:channel_id])

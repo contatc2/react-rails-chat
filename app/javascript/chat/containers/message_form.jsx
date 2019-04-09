@@ -7,10 +7,11 @@ class MessageForm extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
+    this.input = React.createRef();
   }
 
   componentDidMount() {
-    this.messageBox.focus();
+    this.input.current.focus();
   }
 
   handleChange = (event) => {
@@ -19,7 +20,7 @@ class MessageForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.createMessage(this.props.selectedChannel, this.props.currentUser, this.state.value);
+    this.props.createMessage(this.props.selectedChannel, this.state.value);
     this.setState({ value: '' }); // Reset message input
   }
 
@@ -27,7 +28,7 @@ class MessageForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="channel-editor">
         <input
-          ref={(input) => { this.messageBox = input; }}
+          ref={ this.input }
           type="text"
           className="form-control"
           autoComplete="off"
@@ -44,10 +45,5 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ createMessage }, dispatch);
 }
 
-function mapStateToProps(state) {
-  return {
-    currentUser: state.currentUser,
-  };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);
+export default connect(null, mapDispatchToProps)(MessageForm);
