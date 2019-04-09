@@ -7,8 +7,10 @@ import Message from '../components/message';
 import MessageForm from '../containers/message_form';
 
 class MessageList extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.fetchMessages();
+    this.list = React.createRef();
   }
 
   componentDidMount() {
@@ -16,7 +18,7 @@ class MessageList extends Component {
   }
 
   componentDidUpdate() {
-    this.list.scrollTop = this.list.scrollHeight;
+    this.list.current.scrollTop = this.list.current.scrollHeight;
   }
 
   componentWillUnmount() {
@@ -27,16 +29,16 @@ class MessageList extends Component {
     this.props.fetchMessages(this.props.selectedChannel);
   }
 
-  render () {
+  render() {
     return (
       <div className="channel-container">
         <div className="channel-title">
           <span>Channel #{this.props.selectedChannel}</span>
         </div>
-        <div className="channel-content" ref={(list) => { this.list = list; }}>
+        <div className="channel-content" ref = {this.list}>
           {
             this.props.messages.map((message) => {
-              return <Message key={message.id} message={message} />;
+              return <Message key={message.id} message={message} selectedChannel={this.props.selectedChannel} />;
             })
           }
         </div>
@@ -48,8 +50,7 @@ class MessageList extends Component {
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages,
-    selectedChannel: state.selectedChannel
+    messages: state.messages
   };
 }
 

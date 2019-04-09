@@ -30,32 +30,32 @@ body {
   height: 100%;
   background: #f4f4f4;
   box-sizing: border-box;
+  span {
+    font-weight: 900;
+  }
+  ul {
+    list-style: none;
+    -webkit-margin-before: 2em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+    a:hover {
+      text-decoration: none;
+    }
+    li {
+      margin: 10px 0;
+      font-size: 14px;
+      color: #7c7c7c;
+      cursor: pointer;
+    &.active {
+      font-weight: 600;
+      color: black
+    }
+    }
+  }
 }
 
-.channels-container > span {
-  font-weight: 900;
-}
-
-.channels-container > ul {
-  list-style: none;
-  -webkit-margin-before: 2em;
-  -webkit-margin-after: 0em;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
-  -webkit-padding-start: 0px;
-}
-
-.channels-container > ul > li {
-  margin: 10px 0;
-  font-size: 14px;
-  color: #7c7c7c;
-  cursor: pointer;
-}
-
-.channels-container > ul > li.active {
-  font-weight: 600;
-  color: black
-}
 
 /* Column 3/3 *****************************************************************/
 
@@ -63,6 +63,18 @@ body {
   display: flex;
   flex-direction: column;
   width: calc(100% - 290px);
+  i {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    small {
+      position: relative;
+      margin-left: 10px;
+      font-style: italic;
+      font-size: 10px;
+      opacity: 0.6;
+    }
+  }
 }
 
 .channel-title {
@@ -73,11 +85,11 @@ body {
   height: 70px;
   width: 100%;
   border-bottom: 1px solid #f4f4f4;
+  span {
+    font-weight: 600;
+  }
 }
 
-.channel-title > span {
-  font-weight: 600;
-}
 
 .channel-content {
   padding: 20px 20px 0 28px;
@@ -86,18 +98,6 @@ body {
   overflow: scroll;
 }
 
-.message-container > i {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-}
-.message-container > i > small {
-  position: relative;
-  margin-left: 10px;
-  font-style: italic;
-  font-size: 10px;
-  opacity: 0.6;
-}
 
 .message-container > i > small::before {
   content: "-";
@@ -105,10 +105,10 @@ body {
   top: -1px;
   left: -7px;
 }
-
 .message-container > p {
   margin: 5px 0 10px;
 }
+
 
 .channel-editor {
   display: flex;
