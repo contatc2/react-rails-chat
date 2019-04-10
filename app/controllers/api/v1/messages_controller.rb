@@ -3,10 +3,7 @@ class Api::V1::MessagesController < ActionController::API
   def index
     @messages = Message.where(channel: @channel)
     # same as @messages = @channel.messages.order('created_at ASC')
-    # below lines replaced by Message.as_json method in model to display proper fields
-    # messages_display = @messages.map do |message|
-    #   { id: message.id, author: message.user.username, content: message.content, created_at: message.created_at }
-    # end
+    # see Message.as_json method in model to display proper fields
     render json: @messages
   end
 
