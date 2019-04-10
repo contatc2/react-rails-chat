@@ -29,7 +29,7 @@ export function createMessage(channel, content) {
   }).then(r => r.json());
 
   return {
-    type: MESSAGE_CREATED,
+    type: MESSAGE_POSTED,
     payload: promise // Will be resolved by redux-promise
   };
 }

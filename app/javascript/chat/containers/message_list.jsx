@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchMessages } from '../actions';
+import { fetchMessages, appendMessage } from '../actions';
 import Message from '../components/message';
 import MessageForm from '../containers/message_form';
 
@@ -55,7 +55,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchMessages }, dispatch);
+  return bindActionCreators({ fetchMessages, appendMessage }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageList);

@@ -6,5 +6,6 @@ class User < ApplicationRecord
 
   def username
     email.gsub(/@.+/, '')
+    # same as user.email.match(/[^@]+/)[0]
   end
 end
