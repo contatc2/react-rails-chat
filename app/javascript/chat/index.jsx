@@ -13,7 +13,7 @@ const chatContainer = document.getElementById('chat_app');
 
 const initialState = {
   messages: [],
-  channels: [ 'general', 'london', 'react' ], // TODO: get that from Rails DB.
+  channels: JSON.parse(chatContainer.dataset.channels)
 };
 
 const reducers = combineReducers({

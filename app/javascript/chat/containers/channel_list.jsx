@@ -15,12 +15,12 @@ class ChannelList extends Component {
 
   renderChannel = (channel) => {
     return (
-      <Link to={`/channels/${channel}`} key={channel} >
+      <Link to={`/channels/${channel.name}`} key={channel.id} >
         <li
-          className={channel === this.props.selectedChannel ? 'active' : null}
+          className={channel.name === this.props.selectedChannel ? 'active' : null}
           role="presentation"
         >
-          #{channel}
+          #{channel.name}
         </li>
       </Link>
     );
